@@ -1,50 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Chatroom - Chat with Dianne</title>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-    <script src="firebase-config.js"></script>
+    <title>Chat Room - Chat with Dianne</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #chatbox {
+            border: 1px solid #ddd;
+            background: white;
+            width: 90%;
+            height: 400px;
+            margin: 20px auto;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+        #chat-input {
+            width: 80%;
+            padding: 10px;
+        }
+        #send-btn {
+            padding: 10px;
+            background-color: #ff66a3;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Chat with Dianne 💬</h1>
-    <div id="chatbox" style="border:1px solid pink; height:300px; overflow-y:scroll;"></div>
-    <input type="text" id="message" placeholder="Type your message">
-    <button onclick="sendMessage()">Send</button>
 
-    <script>
-        // Firebase chat logic (this works once Firebase is configured)
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const bookingCode = sessionStorage.getItem('bookingCode');
-        const messagesRef = db.collection('chats').doc(bookingCode).collection('messages');
+<header>
+    <h1>Chat Room with Dianne</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="faqs.html">FAQs</a>
+    </nav>
+</header>
 
-        function loadMessages() {
-            messagesRef.orderBy('timestamp').onSnapshot(snapshot => {
-                const chatbox = document.getElementById('chatbox');
-                chatbox.innerHTML = '';
-                snapshot.forEach(doc => {
-                    const msg = doc.data();
-                    const p = document.createElement('p');
-                    p.innerText = `${msg.sender}: ${msg.text}`;
-                    chatbox.appendChild(p);
-                });
-            });
+<section>
+    <h2>Welcome to Your Private Chat Room!</h2>
+    <p>Feel free to chat with Dianne during your scheduled time.</p>
+
+    <div id="chatbox">
+        <p><em>Welcome! Dianne will join shortly...</em></p>
+    </div>
+
+    <input type="text" id="chat-input" placeholder="Type your message here...">
+    <button id="send-btn">Send</button>
+</section>
+
+<footer>
+    © 2025 Chat with Dianne 🌸
+</footer>
+
+<script>
+    const chatbox = document.getElementById('chatbox');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    sendBtn.addEventListener('click', () => {
+        const message = chatInput.value.trim();
+        if (message) {
+            appendMessage('You', message);
+            chatInput.value = '';
+            setTimeout(() => {
+                appendMessage('Dianne', 'Thanks for your message! 😊');
+            }, 1000);
         }
+    });
 
-        function sendMessage() {
-            const message = document.getElementById('message').value;
-            if (message) {
-                messagesRef.add({
-                    sender: 'Client',
-                    text: message,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                });
-                document.getElementById('message').value = '';
-            }
-        }
+    function appendMessage(sender, text) {
+        const messageElement = document.createElement('p');
+        messageElement.innerHTML = `<strong>${sender}:</strong> ${text}`;
+        chatbox.appendChild(messageElement);
+        chatbox.scrollTop = chatbox.scrollHeight;
+    }
+</script>
 
-        loadMessages();
-    </script>
 </body>
 </html>
