@@ -1,17 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Chat with Dianne - Home</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Dianne</title>
+    <style>
+        body {
+            background-color: #fff0f6;
+            font-family: Arial, sans-serif;
+            color: #4a4a4a;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ffb3c6;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 28px;
+            color: #fff;
+            margin: 0;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff66a3;
+        }
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+        .card {
+            background-color: #fff;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+        }
+        .btn {
+            background-color: #ff66a3;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #ff4081;
+        }
+        footer {
+            padding: 10px;
+            background-color: #ffe4ec;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Chat with Dianne 💬</h1>
-        <p>Friendly chats, advice, or anything under the sun 🌸</p>
-        <a href="booking.html">Book a Chat</a> | 
-        <a href="faqs.html">FAQs</a> | 
-        <a href="testimonials.html">Testimonials</a> | 
-        <a href="login.html">Login</a>
-    </header>
+
+<header>
+    <div class="logo">💬</div>
+    <h1>Chat with Dianne</h1>
+    <p>Your friendly online chat buddy & advice guru!</p>
+</header>
+
+<section>
+    <h2>Services & Packages</h2>
+    <div class="card">
+        <h3>Friendly Chat (30 mins)</h3>
+        <p>₱50</p>
+        <button class="btn">Book Now</button>
+    </div>
+    <div class="card">
+        <h3>Advice Session (1 hour)</h3>
+        <p>₱100</p>
+        <button class="btn">Book Now</button>
+    </div>
+    <div class="card">
+        <h3>Unlimited Chat (1 Day)</h3>
+        <p>₱200</p>
+        <button class="btn">Book Now</button>
+    </div>
+</section>
+
+<section>
+    <h2>How to Pay</h2>
+    <p>Payment Options:</p>
+    <p><strong>Maya</strong> - Send to: <em>0912-345-6789</em></p>
+    <p><strong>Bank Transfer</strong> - BDO / BPI (details sent after booking)</p>
+</section>
+
+<section>
+    <h2>Book a Chat Now!</h2>
+    <p>Fill out the form and I’ll message you to confirm your session. 🌸</p>
+    <form action="#" method="post">
+        <input type="text" placeholder="Your Name" required><br><br>
+        <input type="text" placeholder="Preferred Date & Time" required><br><br>
+        <textarea placeholder="Any topic you want to talk about?" rows="4"></textarea><br><br>
+        <button class="btn" type="submit">Submit</button>
+    </form>
+</section>
+
+<footer>
+    © 2025 Chat with Dianne · Friendly Chats & Advice, Anytime! 🌸
+</footer>
+
 </body>
 </html>
